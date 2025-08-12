@@ -110,23 +110,10 @@ If no error message is showing up, the computer should be successfully connected
 - Make sure Dynamixel Wizard is disconnected, and no app is using webcam's stream. It will prevent ROS from connecting to
 these devices.
 
-### Software installation - Conda:
+### Software installation - uv:
 
-    conda create -n aloha python=3.8.10
-    conda activate aloha
-    pip install torchvision
-    pip install torch
-    pip install pyquaternion
-    pip install pyyaml
-    pip install rospkg
-    pip install pexpect
-    pip install mujoco==2.3.7
-    pip install dm_control==1.0.14
-    pip install opencv-python
-    pip install matplotlib
-    pip install einops
-    pip install packaging
-    pip install h5py
+    GIT_LFS_SKIP_SMUDGE=1 uv sync
+    GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
 
 ### Testing teleoperation
 
@@ -141,12 +128,12 @@ All robots will rise to a height that is easy for teleoperation.
     # Right hand terminal
     conda activate aloha
     cd ~/interbotix_ws/src/aloha/aloha_scripts
-    python3 one_side_teleop.py right
+    uv python one_side_teleop.py right
     
     # Left hand terminal
     conda activate aloha
     cd ~/interbotix_ws/src/aloha/aloha_scripts
-    python3 one_side_teleop.py left
+    uv python one_side_teleop.py left
 
 The teleoperation will start when the master side gripper is closed.
 
@@ -161,20 +148,20 @@ To set up a new terminal, run:
 
 The ``one_side_teleop.py`` we ran is for testing teleoperation and has no data collection. To collect data for an episode, run:
 
-    python3 record_episodes.py --dataset_dir <data save dir> --episode_idx 0
+    uv python record_episodes.py --dataset_dir <data save dir> --episode_idx 0
 
 This will store a hdf5 file at ``<data save dir>``.
 To change episode length and other params, edit ``constants.py`` directly.
 
 To visualize the episode collected, run:
 
-    python3 visualize_episodes.py --dataset_dir <data save dir> --episode_idx 0
+    uv python visualize_episodes.py --dataset_dir <data save dir> --episode_idx 0
 
 To replay the episode collected with real robot, run:
 
-    python3 replay_episodes.py --dataset_dir <data save dir> --episode_idx 0
+    uv python replay_episodes.py --dataset_dir <data save dir> --episode_idx 0
 
 To lower 4 robots before e.g. cutting off power, run:
 
-    python3 sleep.py
+    uv python sleep.py
 

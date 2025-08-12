@@ -1,0 +1,25 @@
+[project]
+name = "aloha"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dm-control==1.0.14",
+    "einops>=0.8.1",
+    "h5py>=3.14.0",
+    "matplotlib>=3.10.5",
+    "mujoco==2.3.7",
+    "opencv-python>=4.12.0.88",
+    "packaging>=25.0",
+    "pexpect>=4.9.0",
+    "pyquaternion>=0.9.9",
+    "pyyaml>=6.0.2",
+    "rospkg>=1.6.0",
+    "torch>=2.8.0",
+    "torchvision>=0.23.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
